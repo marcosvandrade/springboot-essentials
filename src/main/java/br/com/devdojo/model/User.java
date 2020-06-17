@@ -1,6 +1,5 @@
 package br.com.devdojo.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Column;
@@ -11,6 +10,10 @@ import javax.persistence.Entity;
  */
 @Entity
 public class User extends AbstractEntity {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     @NotEmpty
     @Column(unique = true)
     private String username;

@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.util.ArrayList;
@@ -15,6 +14,10 @@ import java.util.List;
  * @author William Suane for DevDojo on 7/6/17.
  */
 public class PageableResponse<T> extends PageImpl<T> {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private boolean last;
     private boolean first;
     private int totalPages;

@@ -1,7 +1,5 @@
 package br.com.devdojo.config;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * @author William Suane for DevDojo on 8/24/17.
  */
