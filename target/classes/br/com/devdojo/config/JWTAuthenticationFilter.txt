@@ -1,6 +1,6 @@
 package br.com.devdojo.config;
 
-import br.com.devdojo.model.User;
+// import br.com.devdojo.model.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

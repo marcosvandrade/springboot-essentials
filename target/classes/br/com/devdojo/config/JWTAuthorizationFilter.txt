@@ -1,6 +1,6 @@
 package br.com.devdojo.config;
 
-import br.com.devdojo.service.CustomUserDetailService;
+// import br.com.devdojo.service.CustomUserDetailService;
 import io.jsonwebtoken.Jwts;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
