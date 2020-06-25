@@ -1,9 +1,11 @@
 package br.com.devdojo.error;
 
+import br.com.devdojo.handler.RestExceptionHandler;
+
 /**
  * @author William Suane for DevDojo on 6/13/17.
  */
-public class ResourceNotFoundDetails extends ErrorDetails {
+public class ResourceNotFoundDetails extends RestExceptionHandler {
 
     public static final class Builder {
         private String title;

@@ -1,5 +1,6 @@
 package br.com.devdojo.endpoint;
 
+import br.com.devdojo.error.ResourceNotFoundException;
 import br.com.devdojo.model.Student;
 import br.com.devdojo.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,7 @@ public class StudentEndpoint {
 
     @GetMapping(path = "{id}")
     public ResponseEntity<?> getStudentById(@PathVariable("id") Long id) {
+        verifyIfStudentExists(id);
         Student student = studentDAO.findOne(id);
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
@@ -45,10 +47,10 @@ public class StudentEndpoint {
     //     return new ResponseEntity<>(student, HttpStatus.OK);
     // }
 
-    // @GetMapping(path = "protected/students/findByName/{name}")
-    // public ResponseEntity<?> findStudentsByName(@PathVariable String name){
-    //     return new ResponseEntity<>(studentDAO.findByNameIgnoreCaseContaining(name), HttpStatus.OK);
-    // }
+    @GetMapping(path = "/findByName/{name}")
+    public ResponseEntity<?> findStudentsByName(@PathVariable String name){
+         return new ResponseEntity<>(studentDAO.findByNameIgnoreCaseContaining(name), HttpStatus.OK);
+     }
 
     // @PostMapping(path = "admin/students")
     // @Transactional(rollbackFor = Exception.class)
@@ -58,17 +60,19 @@ public class StudentEndpoint {
 
     @PostMapping
     public ResponseEntity<?> save(@RequestBody Student student) {
-        return new ResponseEntity<>(studentDAO.save(student),HttpStatus.OK);
+        return new ResponseEntity<>(studentDAO.save(student),HttpStatus.CREATED);
     }
 
     @DeleteMapping(path = "{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
+        verifyIfStudentExists(id);
         studentDAO.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping
     public ResponseEntity<?> update(@RequestBody Student student) {
+        verifyIfStudentExists(student.getId());
         studentDAO.save(student);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -87,8 +91,8 @@ public class StudentEndpoint {
 //         studentDAO.save(student);
 //         return new ResponseEntity<>(HttpStatus.OK);
 //     }
-//     private void verifyIfStudentExists(Long id){
-//         if (studentDAO.findOne(id) == null)
-//             throw new ResourceNotFoundException("Student not found for ID: "+id);
-//     }
+    private void verifyIfStudentExists(Long id){
+        if (studentDAO.findOne(id) == null)
+            throw new ResourceNotFoundException("Student not found for ID: "+id);
+    }
 }
