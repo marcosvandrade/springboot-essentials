@@ -1,11 +1,15 @@
 package br.com.devdojo.error;
 
-import br.com.devdojo.handler.RestExceptionHandler;
-
 /**
  * @author William Suane for DevDojo on 6/13/17.
  */
-public class ResourceNotFoundDetails extends RestExceptionHandler {
+public class ResourceNotFoundDetails {
+
+    public String developerMessage;
+    public String title;
+    public String detail;
+    public long timestamp;
+    public int status;
 
     public static final class Builder {
         private String title;
@@ -48,11 +52,11 @@ public class ResourceNotFoundDetails extends RestExceptionHandler {
 
         public ResourceNotFoundDetails build() {
             ResourceNotFoundDetails resourceNotFoundDetails = new ResourceNotFoundDetails();
-            resourceNotFoundDetails.setDeveloperMessage(developerMessage);
-            resourceNotFoundDetails.setTitle(title);
-            resourceNotFoundDetails.setDetail(detail);
-            resourceNotFoundDetails.setTimestamp(timestamp);
-            resourceNotFoundDetails.setStatus(status);
+            resourceNotFoundDetails.developerMessage = this.developerMessage;
+            resourceNotFoundDetails.title = this.title;
+            resourceNotFoundDetails.detail = this.detail;
+            resourceNotFoundDetails.timestamp = this.timestamp;
+            resourceNotFoundDetails.status = this.status;
             return resourceNotFoundDetails;
         }
     }
