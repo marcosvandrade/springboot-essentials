@@ -3,13 +3,7 @@ package br.com.devdojo.error;
 /**
  * @author William Suane for DevDojo on 6/13/17.
  */
-public class ResourceNotFoundDetails {
-
-    public String developerMessage;
-    public String title;
-    public String detail;
-    public long timestamp;
-    public int status;
+public class ResourceNotFoundDetails  extends ErrorDetails{
 
     public static final class Builder {
         private String title;
@@ -52,11 +46,11 @@ public class ResourceNotFoundDetails {
 
         public ResourceNotFoundDetails build() {
             ResourceNotFoundDetails resourceNotFoundDetails = new ResourceNotFoundDetails();
-            resourceNotFoundDetails.developerMessage = this.developerMessage;
-            resourceNotFoundDetails.title = this.title;
-            resourceNotFoundDetails.detail = this.detail;
-            resourceNotFoundDetails.timestamp = this.timestamp;
-            resourceNotFoundDetails.status = this.status;
+            resourceNotFoundDetails.setDeveloperMessage(this.developerMessage);
+            resourceNotFoundDetails.setTitle(this.title);
+            resourceNotFoundDetails.setDetail(this.detail);
+            resourceNotFoundDetails.setTimestamp(this.timestamp);
+            resourceNotFoundDetails.setStatus(this.status);
             return resourceNotFoundDetails;
         }
     }

@@ -2,6 +2,9 @@ package br.com.devdojo.model;
 
 import javax.persistence.Entity;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 /**
  * @author William Suane for DevDojo on 6/5/17.
  */
@@ -9,13 +12,16 @@ import javax.persistence.Entity;
 public class Student extends AbstractEntity {
     
     private static final long serialVersionUID = 1L;
-    private String name;
-    
-    
-    // @NotEmpty
-    // @Email(message = "Digite um email válido")
-    // private String email;
 
+    @NotEmpty(message = "O campo nome do estudante é obrigatório")
+    private String name;
+        
+    @NotEmpty
+    @Email //(message = "Digite um email válido")
+    private String email;
+
+
+    
     // public Student() {
     // }
 
@@ -37,13 +43,13 @@ public class Student extends AbstractEntity {
     //             '}';
     // }
 
-    // public String getEmail() {
-    //     return email;
-    // }
+    public String getEmail() {
+        return email;
+    }
 
-    // public void setEmail(String email) {
-    //     this.email = email;
-    // }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getName() {
         return name;
