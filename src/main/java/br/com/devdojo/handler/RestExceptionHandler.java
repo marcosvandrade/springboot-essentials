@@ -3,6 +3,7 @@ package br.com.devdojo.handler;
 import br.com.devdojo.error.ResourceNotFoundDetails;
 import br.com.devdojo.error.ResourceNotFoundException;
 import br.com.devdojo.error.ValidationErrorDetails;
+import br.com.devdojo.error.ErrorDetails;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -57,20 +58,20 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(rnfDetails, HttpStatus.BAD_REQUEST);
     }
 
-    // @Override
-    // protected ResponseEntity<Object> handleExceptionInternal(Exception ex,
-    //                                                          Object body,
-    //                                                          HttpHeaders headers,
-    //                                                          HttpStatus status,
-    //                                                          WebRequest request) {
-    //     ErrorDetails errorDetails = ErrorDetails.Builder
-    //             .newBuilder()
-    //             .timestamp(new Date().getTime())
-    //             .status(status.value())
-    //             .title("Internal Exception")
-    //             .detail(ex.getMessage())
-    //             .developerMessage(ex.getClass().getName())
-    //             .build();
-    //     return new ResponseEntity<>(errorDetails, headers, status);
-    // }
+    @Override
+    protected ResponseEntity<Object> handleExceptionInternal(Exception ex,
+                                                             Object body,
+                                                             HttpHeaders headers,
+                                                             HttpStatus status,
+                                                             WebRequest request) {
+        ErrorDetails errorDetails = ErrorDetails.Builder
+                .newBuilder()
+                .timestamp(new Date().getTime())
+                .status(status.value())
+                .title("Internal Exception")
+                .detail(ex.getMessage())
+                .developerMessage(ex.getClass().getName())
+                .build();
+        return new ResponseEntity<>(errorDetails, headers, status);
+    }
 }
