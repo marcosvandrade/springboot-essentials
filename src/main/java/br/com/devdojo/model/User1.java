@@ -1,15 +1,19 @@
 package br.com.devdojo.model;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * @author William Suane for DevDojo on 6/27/17.
  */
+
+//  postgres não aceitou criar a tabela user, provavelmente por ser uma variavel de sistema
 @Entity
-public class User extends AbstractEntity {
+public class User1 extends AbstractEntity {
     /**
      *
      */
@@ -18,6 +22,7 @@ public class User extends AbstractEntity {
     @Column(unique = true)
     private String username;
     @NotEmpty
+    @JsonIgnore
     private String password;
     @NotEmpty
     private String name;
