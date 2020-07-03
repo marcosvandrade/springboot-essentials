@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - JavaClientTest",
+            "request": "launch",
+            "mainClass": "br.com.devdojo.javaclient.JavaClientTest",
+            "projectName": "demo"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - PasswordEncoder",
             "request": "launch",
             "mainClass": "br.com.devdojo.PasswordEncoder",
