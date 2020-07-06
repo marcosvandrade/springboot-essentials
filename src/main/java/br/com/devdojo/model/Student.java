@@ -35,13 +35,13 @@ public class Student extends AbstractEntity {
     //     this.email = email;
     // }
 
-    // @Override
-    // public String toString() {
-    //     return "Student{" +
-    //             "name='" + name + '\'' +
-    //             ", email='" + email + '\'' +
-    //             '}';
-    // }
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 
     public String getEmail() {
         return email;
