@@ -1,14 +1,16 @@
 package br.com.devdojo.model;
 
-import br.com.devdojo.util.CustomSortDeserializer;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
-import java.util.ArrayList;
-import java.util.List;
+import br.com.devdojo.util.CustomSortDeserializer;
 
 /**
  * @author William Suane for DevDojo on 7/6/17.
@@ -25,10 +27,9 @@ public class PageableResponse<T> extends PageImpl<T> {
     public PageableResponse(@JsonProperty("content") List<T> content,
                             @JsonProperty("number") int page,
                             @JsonProperty("size") int size,
-                            @JsonProperty("totalElements") long totalElements,
-                            @JsonProperty("sort") @JsonDeserialize(using = CustomSortDeserializer.class)
-                                    Sort sort) {
-        super(content, new PageRequest(page, size,sort), totalElements);
+                            @JsonProperty("totalElements") long totalElements, 
+                            @JsonProperty("sort")   @JsonDeserialize(using = CustomSortDeserializer.class) Sort sort) {
+        super(content, new PageRequest(page, size, sort), totalElements);
     }
 
     public PageableResponse() {
