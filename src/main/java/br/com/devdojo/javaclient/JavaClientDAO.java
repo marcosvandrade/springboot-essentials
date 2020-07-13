@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import br.com.devdojo.handler.RestResponseExceptionHandler;
 import br.com.devdojo.model.PageableResponse;
 import br.com.devdojo.model.Student;
 
@@ -21,12 +22,12 @@ public class JavaClientDAO {
     private RestTemplate restTemplate = new RestTemplateBuilder()
             .rootUri("http://localhost:8081/v1/protected/students")
             .basicAuthorization("toyo", "devdojo")
-            // .errorHandler(new RestResponseExceptionHandler())
+             .errorHandler(new RestResponseExceptionHandler())
             .build();
     private RestTemplate restTemplateAdmin = new RestTemplateBuilder()
             .rootUri("http://localhost:8081/v1/admin/students")
             .basicAuthorization("toyo", "devdojo")
-            // .errorHandler(new RestResponseExceptionHandler())
+            .errorHandler(new RestResponseExceptionHandler())
             .build();
 
     public Student findById(long id) {
@@ -47,12 +48,12 @@ public class JavaClientDAO {
         return exchangePost.getBody();
     }
 
-    // public void update(Student student){
-    //     restTemplateAdmin.put("/",student);
-    // }
-    // public void delete(long id){
-    //     restTemplateAdmin.delete("/{id}",id);
-    // }
+    public void update(Student student){
+        restTemplateAdmin.put("/",student);
+    }
+    public void delete(long id){
+        restTemplateAdmin.delete("/{id}",id);
+    }
 
     private static HttpHeaders createJSONHeader() {
         HttpHeaders headers = new HttpHeaders();

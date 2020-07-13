@@ -1,7 +1,5 @@
 package br.com.devdojo.javaclient;
 
-import java.util.List;
-
 import br.com.devdojo.model.Student;
 
 /**
@@ -34,24 +32,24 @@ public class JavaSpringClientTest {
         
         // System.out.println(exchange);
         Student studentPost = new Student();
-        studentPost.setName("John Wick 2");
+        studentPost.setName("John Wick 3");
         studentPost.setEmail("john@pencil.com");
         // ResponseEntity<Student> exchangePost =  restTemplateAdmin.exchange("/", HttpMethod.POST, new HttpEntity<>(studentPost,createJSONHeader()), Student.class);
-// //        studentPost.setId(29L);
+        //studentPost.setId(46L);
         JavaClientDAO dao = new JavaClientDAO();
-        // System.out.println(dao.findById(42));
+        //System.out.println(dao.findById(142));
         // System.out.println(dao.listAll());
-        List<Student> students = dao.listAll();
-        System.out.println(students);
+        // List<Student> students = dao.listAll();
+        // System.out.println(students);
         // Student studentPostForObject = restTemplateAdmin.postForObject("/", studentPost, Student.class);
         // ResponseEntity<Student> studentResponseEntity = restTemplateAdmin.postForEntity("/", studentPost, Student.class);
         // System.out.println(exchangePost);
         // System.out.println(studentPostForObject);
         // System.out.println(studentResponseEntity);
         // System.out.println(dao.save(studentPost));
-// //        dao.update(studentPost);
-//         dao.delete(29);
-
+        //dao.update(studentPost);
+         dao.delete(43);
+         
     }
 
     // private static HttpHeaders createJSONHeader(){
