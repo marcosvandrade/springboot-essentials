@@ -1,6 +1,6 @@
 package br.com.devdojo.config;
 
-// import br.com.devdojo.model.User;
+import br.com.devdojo.model.User1;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -32,7 +32,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
-            User user = new ObjectMapper().readValue(request.getInputStream(), User.class);
+            User1 user = new ObjectMapper().readValue(request.getInputStream(), User1.class);
             return this.authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
         } catch (IOException e) {

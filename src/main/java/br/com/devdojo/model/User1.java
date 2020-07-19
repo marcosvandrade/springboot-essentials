@@ -22,7 +22,7 @@ public class User1 extends AbstractEntity {
     @Column(unique = true)
     private String username;
     @NotEmpty
-    @JsonIgnore
+    // @JsonIgnore
     private String password;
     @NotEmpty
     private String name;
