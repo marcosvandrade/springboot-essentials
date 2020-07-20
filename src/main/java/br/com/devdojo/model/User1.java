@@ -3,8 +3,6 @@ package br.com.devdojo.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
